@@ -1,0 +1,259 @@
+/* reset */
+html
+{
+    box-sizing: border-box;
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+    margin: inherit;
+    text-wrap: balance;
+}
+
+p
+{
+    margin: inherit;
+    text-wrap: pretty;
+    max-width: 75ch;
+}
+
+a
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+ul,
+ol
+{
+    margin: 0;
+    padding: 0;
+}
+
+img,
+svg,
+picture,
+figure
+{
+    display: block;
+    /* width: 100%; */
+    max-width: 100%;
+    height: auto;
+}
+
+/* global variables */
+:root
+{
+    /* primary colors */
+    --clr-soft-blue: hsl(215, 51%, 70%);
+    --clr-cyan: hsl(178, 100%, 50%);
+
+    /* neutrals / accents */
+    --clr-dark-blue-mainBG: hsl(217, 54%, 11%);
+    --clr-very-dark-blue-cardBG: hsl(216, 50%, 16%);
+    --clr-very-dark-blue-line: hsl(215, 32%, 27%);
+
+
+    /* font sizes */
+    --fs-14: clamp(0.875rem, 5vw + 1rem, 0.9375rem);
+    --fs-16: clamp(1rem, 5vw + 1rem, 1.0625rem);
+    --fs-18: clamp(1.125rem, 5vw + 1rem, 1.25rem);
+    --fs-25: clamp(1.5625rem, 5vw + 1rem, 1.625rem);
+}
+
+body
+{
+    color: var(--clr-soft-blue);
+    font-size: var(--fs-18);
+    /* min-height: 100vh; */
+    line-height: 1.5;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.wrapper
+{
+    background-color: var(--clr-dark-blue-mainBG);
+    min-height: 100vh;
+    align-content: center;
+}
+
+.col-1
+{
+    background-color: var(--clr-very-dark-blue-cardBG);
+    max-width: min(21.875rem, calc(100% - 32px));
+    margin-inline: auto;
+    padding-block: 1em;
+    border-radius: 10px;
+}
+
+.grid
+{
+    display: grid;
+    max-width: min(18.75rem, calc(100% - 32px));
+    margin-inline: auto;
+    gap: 1em;
+}
+
+.nft-image
+{
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &:hover .image-overlay
+    {
+        display: block;
+        cursor: pointer;
+    }
+
+    & .image-overlay
+    {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        /* relative colors */
+        background-color: hsl(from var(--clr-cyan) h s l / .3);
+        display: none;
+    }
+
+    & .image-overlay img
+    {
+        position: absolute;
+        width: 20%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+/* .image-overlay
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    relative colors
+background-color: hsl(from var(--clr-cyan) h s l / .3);
+display: none;
+} */
+
+/* .image-overlay img
+{
+    position: absolute;
+    width: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+} */
+
+.nft-header
+{
+    & h1
+    {
+        color: white;
+        font-size: var(--fs-25);
+
+        & :hover
+        {
+            color: var(--clr-cyan);
+        }
+    }
+}
+
+.nft-text
+{
+    font-size: var(--fs-16);
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.border-bottom
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    border-bottom: 1px solid var(--clr-very-dark-blue-line);
+    padding-block-end: 1em;
+
+    & img
+    {
+        width: auto;
+        display: inline;
+        vertical-align: middle;
+    }
+
+    & p
+    {
+        display: inline;
+        font-size: var(--fs-14);
+        vertical-align: middle;
+    }
+
+    & .nft-time
+    {
+        justify-self: end;
+    }
+
+    & .nft-value
+    {
+        color: var(--clr-cyan);
+        font-weight: 600;
+    }
+}
+
+
+
+.nft-author
+{
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    align-items: center;
+    gap: 1em;
+
+    & img
+    {
+        display: inline;
+        /* width: 30%; */
+        border: 1px solid white;
+        border-radius: 9999px;
+    }
+
+    & p
+    {
+        display: inline;
+        font-weight: 600;
+        font-size: var(--fs-14);
+
+        & .author-name
+        {
+            color: white;
+
+            & :hover
+            {
+                color: var(--clr-cyan)
+            }
+        }
+    }
+}
